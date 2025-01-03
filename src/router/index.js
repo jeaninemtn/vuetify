@@ -5,9 +5,21 @@
  */
 
 // Composables
-import { createRouter, createWebHistory } from 'vue-router/auto'
-import { setupLayouts } from 'virtual:generated-layouts'
-import { routes } from 'vue-router/auto-routes'
+import { createRouter, createWebHistory } from 'vue-router/auto';
+import { setupLayouts } from 'virtual:generated-layouts';
+// import { routes } from 'vue-router/auto-routes';
+
+const routes = [
+  { path: "/index", name: "Index", component: () => import("../pages/index.vue") },
+  { path: "/button", name: "Buttons", component: () => import("../views/Button.vue") },
+  { path: "/checkbox", name: "Checkbox", component: () => import("../views/Checkbox.vue") },
+  { path: "/input", name: "Input", component: () => import("../views/Input.vue") },
+  { path: "/select", name: "Select", component: () => import("../views/Select.vue") },
+  { path: "/colors", name: "Colors", component: () => import("../views/Colors.vue") },
+  { path: "/fonts", name: "Fonts", component: () => import("../views/Fonts.vue") },
+
+  { path: "/", redirect: "/index" }, // 預設跳轉到首頁
+];
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
